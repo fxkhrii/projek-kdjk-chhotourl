@@ -1,13 +1,10 @@
 
-Muhammad faqih
-
 # Aplikasi Web "Chhoto URL"
 
 
 ## Sekilas Tentang
 
-Deskripsi singkat tentang aplikasi tsb.
-
+Nama Chhoto berasal dari bahasa Bangla yang berarti "kecil", sehingga Chhoto URL berarti "URL kecil". Aplikasi ini adalah self-hosted URL shortener ringan dan sederhana, dibangun dengan Rust. Dengan ukuran Docker image <10 MB dan penggunaan RAM <15 MB, Chhoto URL hanya menyediakan fitur esensial seperti hit counting, tanpa tambahan yang tidak perlu.
 
 ## Instalasi
 
