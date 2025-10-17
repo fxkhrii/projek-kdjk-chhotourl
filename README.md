@@ -1,5 +1,5 @@
 # Aplikasi Web "Chhoto URL"
-| Logo |
+| Chhoto URL |
 |:---:|
 | ![Chhoto URL](Screenshoot/favicon.svg) |
 
