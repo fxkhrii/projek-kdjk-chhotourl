@@ -11,22 +11,22 @@ Dengan performa tinggi serta kemudahan penggunaan melalui antarmuka web maupun C
 
 ## Instalasi
 
-Kebutuhan Sistem
+### Kebutuhan Sistem:
 
-Sebuah Virtual Machine (misalnya VirtualBox dengan Kali Linux).
+  *Sebuah Virtual Machine (misalnya VirtualBox dengan Kali Linux).
+  - Docker dan Docker Compose terinstal di dalam VM.
+  *Akun gratis di situs Ngrok.
 
-Docker dan Docker Compose terinstal di dalam VM.
-
-Akun gratis di situs Ngrok.
-
-Proses Instalasi
+### Proses Instalasi
 
 Login ke dalam Virtual Machine Anda, buka terminal, lalu buat direktori proyek.
 
-# Pindah ke direktori home
+### Pindah ke direktori home
+```
 $ cd ~
-# Membuat folder bernama chhoto-url dan masuk ke dalamnya
-$ mkdir chhoto-url && cd chhoto-url
+```
+### Membuat folder bernama chhoto-url dan masuk ke dalamnya
+  $ mkdir chhoto-url && cd chhoto-url
 
 
 Buat file konfigurasi docker-compose.yml menggunakan editor teks.
