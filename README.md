@@ -110,7 +110,7 @@ Simpan file, lalu jalankan kembali container Docker dengan konfigurasi baru.
 $ docker-compose up -d
 ```
 
-## Konfigurasi (opsional)
+## Konfigurasi 
 
 Seluruh konfigurasi utama Chhoto URL diatur melalui environment variables di dalam file docker-compose.yml. Berikut adalah tiga variabel paling penting:
 
