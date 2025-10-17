@@ -52,10 +52,12 @@ Skrip shell untuk otomatisasi instalasi, konfigurasi, dan maintenance.
 ## Pembahasan
 
 - Pendapat anda tentang aplikasi web ini
-    - kelebihan
-    - kekurangan
-- Bandingkan dengan aplikasi web lain yang sejenis
+**Kelebihan & Kekurangan**
+Chhoto URL memiliki beberapa keunggulan utama. Pertama, aplikasinya sangat ringan dan efisien, karena dibangun dengan teknologi yang cepat dan hemat sumber daya. Aplikasi ini dapat dijalankan pada server dengan spesifikasi rendah, bahkan di komputer pribadi, tanpa mengurangi kinerjanya. Kedua, sistemnya mudah digunakan, baik melalui antarmuka web maupun melalui perintah terminal (CLI). Pengguna cukup memasukkan URL panjang untuk mendapatkan versi pendek secara otomatis. Ketiga, Chhoto URL dapat dijalankan di berbagai platform, seperti Fly.io, Render, atau DigitalOcean, sehingga fleksibel untuk kebutuhan pribadi maupun organisasi kecil.
 
+Dari sisi teknis, Chhoto URL juga memiliki struktur kerja yang sederhana namun efektif. Saat pengguna meminta pembuatan tautan pendek, server memproses data dan menghasilkan URL baru yang mengarah ke alamat asli. Proses ini berlangsung cepat dan stabil karena menggunakan sistem pemrosesan permintaan secara paralel. Selain itu, pengguna memiliki kontrol penuh terhadap data yang tersimpan, karena seluruh sistem dapat dihosting sendiri tanpa ketergantungan pada layanan pihak ketiga.
+
+Namun, Chhoto URL juga memiliki beberapa kekurangan. Sistem penyimpanan datanya masih menggunakan SQLite, yang kurang optimal untuk jumlah pengguna yang besar atau trafik tinggi. Aplikasi ini juga belum memiliki fitur pembagian beban (load balancing) atau cadangan server (backup system), sehingga jika server mengalami gangguan, layanan akan berhenti sepenuhnya. Dari sisi keamanan, Chhoto URL belum memiliki sistem enkripsi internal atau pengamanan tambahan, sehingga pengguna perlu menambahkan lapisan keamanan sendiri seperti SSL atau firewall eksternal. Selain itu, fitur analisis penggunaan masih terbatas; aplikasi hanya menampilkan jumlah kunjungan tanpa statistik lebih lanjut seperti lokasi pengguna atau waktu akses.
 
 ## Referensi
 
