@@ -48,7 +48,6 @@ Salin dan tempel seluruh konfigurasi berikut ke dalam editor. Ganti nilai PASSWO
        - PASSWORD=GANTI_DENGAN_PASSWORD_ANDA
        - API_KEY=GANTI_DENGAN_API_KEY_ANDA
 ```
-
 Jalankan container Docker di latar belakang dan verifikasi bahwa container sudah berjalan.
 ```
  $ docker-compose up -d
@@ -56,27 +55,25 @@ Jalankan container Docker di latar belakang dan verifikasi bahwa container sudah
 ```
 Pastikan status container adalah Up atau Running.
 
-Unduh Ngrok. Kunjungi halaman download Ngrok, klik kanan pada tombol download Linux, lalu "Salin alamat tautan".
+Kunjungi halaman download Ngrok, cari "Linux", pilih cara install yang anda inginkan(apt/download/snap).
 
-Pindah ke direktori home
-```
- $ cd ~
-```
-Ganti "LINK_DARI_WEBSITE" dengan tautan yang Anda salin
-```
- $ wget "LINK_DARI_WEBSITE"
-```
-Ekstrak file ke lokasi yang dapat diakses dari mana saja
-```
- $ sudo tar xvz ngrok-v3-*.tgz -C /usr/local/bin
-```
-Hubungkan program ngrok dengan akun Anda. Dapatkan authtoken dari dashboard Ngrok.
+contoh jika memilih apt:
 
-Ganti <TOKEN_ANDA> dengan token dari dashboard
+Masukkan command dibawah ke terminal.
+```
+curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
+  | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
+  && echo "deb https://ngrok-agent.s3.amazonaws.com bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/ngrok.list \
+  && sudo apt update \
+  && sudo apt install ngrok
+```
+Login ke ngrok dengan akun anda. Cari <TOKEN_ANDA> pada bagian Your Authroken lalu salin.
+
+Masukkan command dibawah ke terminal. Ganti <TOKEN_ANDA> dengan token yang sudah anda salin dari ngrok.
 ```
  $ ngrok config add-authtoken <TOKEN_ANDA>
 ```
-
 Buka "terowongan" ke port 4567. Biarkan terminal ini tetap berjalan.
 ```
  $ ngrok http 4567
