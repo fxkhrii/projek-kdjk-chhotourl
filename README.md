@@ -164,57 +164,48 @@ Tautan pendek baru Anda akan muncul di daftar di bawahnya. Anda dapat menyalinny
 
 ## Pembahasan
 
-**Kelebihan Chhoto URL**
+### **Kelebihan Chhoto URL**
 
-1. Efisiensi dalam Transmisi Data
+**1. Efisiensi dalam Transmisi Data**
+Chhoto URL memperpendek panjang alamat web yang dikirimkan, sehingga ukuran data menjadi lebih kecil. Hal ini membuat proses pengiriman dan penerimaan data berjalan lebih cepat serta mengurangi beban jaringan, terutama pada koneksi dengan bandwidth terbatas.
 
-Chhoto URL memperpendek panjang data yang dikirimkan dalam proses komunikasi HTTP, sehingga mempercepat waktu transmisi dan mengurangi overhead jaringan. Pemendekan URL secara langsung menurunkan ukuran payload pada lapisan aplikasi, yang berdampak pada efisiensi throughput jaringan, terutama pada koneksi dengan bandwidth terbatas.
+**2. Performa Tinggi dan Respons Cepat**
+Dibangun menggunakan **Rust** dan **Actix Web**, Chhoto URL mampu menangani banyak permintaan secara bersamaan tanpa penurunan kecepatan. Mekanisme asinkron membuat server tetap stabil walaupun melayani beberapa koneksi sekaligus.
 
-2. Performa Tinggi dan Respons Cepat
+**3. Struktur Client–Server yang Jelas**
+Sistem bekerja dengan pola **client–server** yang sederhana. Pengguna mengirim permintaan untuk membuat atau membuka tautan, dan server merespons dengan hasil atau melakukan pengalihan secara langsung.
 
-Aplikasi ini dibangun menggunakan Rust dan framework Actix Web, yang memiliki keunggulan dalam penanganan I/O asinkron. Mekanisme tersebut memungkinkan server menangani banyak koneksi secara paralel tanpa penurunan kinerja. Dari sisi komunikasi data, ini meningkatkan efisiensi dalam pengiriman dan penerimaan paket pada lapisan transport.
+**4. Implementasi Protokol Standar Jaringan**
+Chhoto URL beroperasi menggunakan **HTTP/HTTPS** dan memanfaatkan kode status standar seperti **301 (Permanent Redirect)** dan **302 (Temporary Redirect)**. Proses pengalihan dilakukan sesuai aturan umum yang digunakan oleh sistem web modern.
 
-3. Struktur Client–Server yang Jelas
+**5. Portabilitas dan Fleksibilitas Jaringan**
+Aplikasi dapat dijalankan di berbagai lingkungan, mulai dari server lokal, jaringan internal, hingga layanan cloud seperti **Fly.io**, **Render**, atau **DigitalOcean**. Dukungan **Docker** juga memudahkan proses instalasi dan pemindahan antar server.
 
-Chhoto URL mengimplementasikan pola client–server secara eksplisit. Client mengirimkan permintaan HTTP untuk membuat atau mengakses URL pendek, dan server menanggapi dengan hasil atau melakukan redirect. Pola ini mencerminkan arsitektur komunikasi dua arah yang menjadi dasar interaksi jaringan modern berbasis TCP/IP.
+**6. Transparansi Sistem dan Kemudahan Analisis Jaringan**
+Sebagai aplikasi **open-source**, seluruh alur kerja dan pengelolaan data dapat diperiksa secara terbuka. Hal ini memudahkan pengguna memahami cara sistem memproses permintaan dan mengatur koneksi jaringan.
 
-4. Implementasi Protokol Standar Jaringan
+---
 
-Aplikasi ini beroperasi penuh di atas protokol HTTP/HTTPS, dengan penggunaan kode status seperti 301 (Permanent Redirect) dan 302 (Temporary Redirect). Hal tersebut menunjukkan penerapan standar komunikasi data pada lapisan aplikasi dan keterkaitannya dengan lapisan transport TCP. Setiap interaksi menunjukkan siklus permintaan dan respons yang sesuai dengan prinsip komunikasi berlapis OSI.
+### **Kekurangan Chhoto URL**
 
-5. Portabilitas dan Fleksibilitas Jaringan
+**1. Skalabilitas Terbatas dalam Koneksi Jaringan**
+Chhoto URL masih menggunakan **SQLite** sebagai basis data utama, sehingga kurang optimal untuk menangani banyak permintaan atau koneksi secara bersamaan.
 
-Chhoto URL dapat dijalankan di berbagai lingkungan jaringan—baik pada server lokal (intranet), cloud publik (Fly.io, Render, DigitalOcean), maupun jaringan privat dengan konfigurasi Docker. Portabilitas ini menunjukkan fleksibilitas arsitektur aplikasi dalam berbagai topologi jaringan, dari skala kecil hingga terdistribusi.
+**2. Tidak Mendukung Distribusi Beban (Load Balancing)**
+Seluruh permintaan pengguna diproses oleh satu server tanpa sistem pembagian beban otomatis. Akibatnya, performa dapat menurun ketika trafik meningkat.
 
-6. Transparansi Sistem dan Kemudahan Analisis Jaringan
+**3. Ketergantungan pada Keamanan Eksternal**
+Aplikasi belum memiliki fitur keamanan internal seperti enkripsi atau autentikasi lanjutan. Perlindungan data sepenuhnya bergantung pada konfigurasi eksternal seperti SSL atau reverse proxy.
 
-Karena bersifat open-source, seluruh alur komunikasi dan manajemen data dapat dipelajari serta diaudit secara terbuka. Transparansi ini memungkinkan pengamatan terhadap bagaimana data dikirim, diterima, dan diproses pada berbagai lapisan jaringan, termasuk penanganan permintaan HTTP, pengalihan tautan, dan manajemen koneksi.
+**4. Tidak Memiliki Pemantauan Trafik dan Performa Jaringan**
+Belum ada sistem pemantauan internal untuk melihat performa jaringan seperti waktu respons, jumlah permintaan, atau tingkat penggunaan server.
 
-**Kekurangan Chhoto URL**
+**5. Dokumentasi Konfigurasi Jaringan Kurang Lengkap**
+Panduan resmi hanya mencakup cara instalasi dasar tanpa penjelasan teknis mengenai konfigurasi port, firewall, atau integrasi sistem jaringan.
 
-1. Skalabilitas Terbatas dalam Koneksi Jaringan
+**6. Tidak Mendukung Redundansi dan Keandalan Tinggi**
+Aplikasi belum memiliki fitur *failover* atau *replication*, sehingga jika server utama berhenti, layanan akan ikut terhenti tanpa sistem cadangan yang aktif.
 
-Chhoto URL menggunakan SQLite sebagai basis data lokal, yang hanya mampu menangani satu operasi tulis dalam satu waktu. Dalam konteks komunikasi jaringan, hal ini membatasi jumlah koneksi simultan dan throughput data, terutama saat banyak permintaan terjadi secara bersamaan.
-
-2. Tidak Mendukung Distribusi Beban (Load Balancing)
-
-Aplikasi tidak memiliki mekanisme pembagian beban trafik secara otomatis. Semua permintaan diarahkan ke satu instance server, menyebabkan potensi bottleneck pada lapisan aplikasi ketika beban jaringan meningkat. Hal ini membatasi efisiensi komunikasi data pada lingkungan multi-client.
-
-3. Ketergantungan pada Keamanan Eksternal
-
-Chhoto URL tidak menyediakan enkripsi internal maupun autentikasi tingkat jaringan. Keamanan komunikasi hanya bergantung pada lapisan eksternal, seperti penggunaan HTTPS melalui reverse proxy. Tanpa lapisan keamanan tambahan, komunikasi data rentan terhadap serangan sniffing atau injection pada jaringan terbuka.
-
-4. Tidak Memiliki Pemantauan Trafik dan Performa Jaringan
-
-Aplikasi ini tidak dilengkapi dengan fitur pemantauan (network monitoring) atau pengukuran performa seperti latency, packet loss, dan request time. Ketiadaan sistem pengawasan internal membatasi kemampuan untuk menganalisis efisiensi komunikasi data secara mendetail.
-
-5. Dokumentasi Konfigurasi Jaringan Kurang Lengkap
-
-Panduan resmi hanya berfokus pada instalasi aplikasi tanpa penjelasan detail mengenai integrasi dengan konfigurasi jaringan, seperti pengaturan port, NAT, atau firewall. Kondisi ini menyulitkan dalam pengelolaan konektivitas lintas jaringan atau penerapan sistem di lingkungan yang lebih kompleks.
-
-6. Tidak Mendukung Redundansi dan Keandalan Tinggi
-
-Chhoto URL belum memiliki mekanisme replikasi data atau sistem failover. Dalam konteks jaringan, hal ini berarti tidak ada jalur komunikasi cadangan jika terjadi kegagalan server utama. Akibatnya, ketahanan sistem terhadap gangguan jaringan tergolong rendah.
 
 **Perbandingan Aplikasi Pemendek URL**
 
