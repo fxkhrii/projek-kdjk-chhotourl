@@ -207,7 +207,7 @@ Panduan resmi hanya mencakup cara instalasi dasar tanpa penjelasan teknis mengen
 Aplikasi belum memiliki fitur *failover* atau *replication*, sehingga jika server utama berhenti, layanan akan ikut terhenti tanpa sistem cadangan yang aktif.
 
 
-**Perbandingan Aplikasi Pemendek URL**
+### **Perbandingan Aplikasi Pemendek URL**
 
 | Aspek | **Chhoto** | **Bitly** | **TinyURL** |
 |:------|:------------|:-----------|:-------------|
