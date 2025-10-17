@@ -1,4 +1,5 @@
 # Aplikasi Web "Chhoto URL"
+![Alt text](Screenshoot/favicon.svg)
 
 
 ## Pengenalan Chhoto URL
