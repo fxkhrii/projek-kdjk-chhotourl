@@ -121,7 +121,7 @@ Seluruh konfigurasi utama Chhoto URL diatur melalui environment variables di dal
 Setiap kali Anda mengubah nilai variabel ini, Anda harus menjalankan ulang container dengan docker-compose down dan docker-compose up -d agar perubahan diterapkan.
 
 ## Cara Pemakaian
-| ![Chhoto URL](https://github.com/fxkhrii/projek-kdjk-chhotourl/blob/main/Screenshoot/Screenshot%202025-10-17%20194338.png) |
+ ![Chhoto URL](https://github.com/fxkhrii/projek-kdjk-chhotourl/blob/main/Screenshoot/Screenshot%202025-10-17%20194338.png)
 Setelah aplikasi berjalan dan dapat diakses melalui link ngrok:
 
  - Buka URL ngrok di browser. Anda mungkin akan melihat halaman peringatan dari ngrok. Klik "Visit Site" untuk melanjutkan.
