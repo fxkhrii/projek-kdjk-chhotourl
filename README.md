@@ -1,3 +1,100 @@
+Tentu, saya mengerti masalahnya. Seringkali saat menyalin-tempel, format Markdown bisa sedikit berantakan. Mengeditnya langsung di GitHub sangat mudah.
+
+Anda tidak perlu mengedit baris per baris. Cara termudah adalah dengan **mengganti seluruh isi file** dengan versi yang sudah diperbaiki formatnya.
+
+Saya sudah menyiapkan versi yang sudah diperbaiki di bawah ini. Cukup ikuti langkah-langkah berikut.
+
+### Cara Memperbaiki Format di GitHub
+
+1.  Buka file `README.md` di repositori GitHub Anda.
+
+2.  Klik **ikon pensil (✏️)** di pojok kanan atas untuk masuk ke mode edit.
+
+    [Gambar antarmuka GitHub dengan panah menunjuk ke ikon edit]
+
+3.  **Hapus semua teks** yang ada di dalam editor.
+
+4.  **Salin seluruh konten** dari file yang sudah saya perbaiki di bawah ini, lalu **tempelkan** ke dalam editor di GitHub.
+
+5.  Gulir ke bawah halaman, beri judul perubahan (misalnya, "Perbaiki format Markdown"), lalu klik tombol hijau **"Commit changes"**.
+
+-----
+
+### Konten README.md yang Sudah Diperbaiki
+
+Gunakan konten di dalam file ini untuk menggantikan konten lama di GitHub. Saya sudah memperbaiki:
+
+  * **Link navigasi** di bagian atas agar berfungsi dengan benar.
+  * **Blok kode** agar memiliki *syntax highlighting* (warna) yang sesuai.
+  * **Format daftar** agar lebih rapi.
+
+http://googleusercontent.com/immersive_entry_chip/0
+
+-----
+
+## Konfigurasi
+
+^ [kembali ke atas](https://www.google.com/search?q=%23readme---deploy-chhoto-url-dengan-docker-dan-ngrok) ^
+
+Seluruh konfigurasi utama Chhoto URL diatur melalui *environment variables* di dalam file `docker-compose.yml`. Berikut adalah tiga variabel paling penting:
+
+  * **`SITE_URL`**: Ini adalah alamat URL publik aplikasi Anda. Nilai ini **wajib** diisi dengan alamat yang diberikan oleh `ngrok` agar semua tautan pendek yang dihasilkan menjadi benar.
+  * **`PASSWORD`**: Password yang Anda buat sendiri untuk login ke antarmuka web Chhoto URL.
+  * **`API_KEY`**: Kunci rahasia yang Anda buat sendiri untuk otentikasi saat menggunakan API (misalnya, membuat tautan pendek via `curl`).
+
+Setiap kali Anda mengubah nilai variabel ini, Anda harus menjalankan ulang container dengan `docker-compose down` dan `docker-compose up -d` agar perubahan diterapkan.
+
+-----
+
+## Cara Pemakaian
+
+^ [kembali ke atas](https://www.google.com/search?q=%23readme---deploy-chhoto-url-dengan-docker-dan-ngrok) ^
+
+Setelah aplikasi berjalan dan dapat diakses melalui link `ngrok`:
+
+1.  Buka URL `ngrok` di browser. Anda mungkin akan melihat halaman peringatan dari `ngrok`. Klik **"Visit Site"** untuk melanjutkan.
+2.  Anda akan disambut oleh halaman login. Masukkan **`PASSWORD`** yang telah Anda atur di file `docker-compose.yml`.
+3.  **Untuk Membuat Tautan Pendek:**
+      * Tempelkan URL panjang yang ingin Anda singkat di kolom "Long URL".
+      * Anda bisa membiarkan "Short URL" kosong agar dibuat secara acak, atau mengisinya dengan teks kustom.
+      * Klik **"Go"**.
+4.  Tautan pendek baru Anda akan muncul di daftar di bawahnya. Anda dapat menyalinnya, melihat QR Code-nya, atau menghapusnya.
+
+-----
+
+## Pembahasan
+
+^ [kembali ke atas](https://www.google.com/search?q=%23readme---deploy-chhoto-url-dengan-docker-dan-ngrok) ^
+
+Metode *deployment* menggunakan Docker di VM lokal yang di-ekspos melalui `ngrok` memiliki beberapa kelebihan dan kekurangan yang penting untuk dipahami.
+
+#### Kelebihan
+
+  * **Gratis & Cepat:** Tidak memerlukan biaya sewa VPS dan prosesnya sangat cepat untuk membuat aplikasi lokal menjadi publik.
+  * **Tidak Perlu Kartu Kredit:** Tidak seperti layanan VPS, `ngrok` tidak memerlukan verifikasi kartu kredit untuk paket gratisnya.
+  * **Sangat Baik untuk Demo & Tugas:** Metode ini sempurna untuk mempresentasikan proyek atau tugas tanpa perlu setup server yang rumit.
+
+#### Kekurangan
+
+  * **Tidak Online 24/7:** Aplikasi hanya dapat diakses selama komputer utama, VirtualBox, container Docker, dan terminal `ngrok` semuanya berjalan. Jika salah satu mati, link akan ikut mati.
+  * **URL Dinamis:** Pada paket gratis `ngrok`, URL publik akan **berubah** setiap kali Anda menghentikan dan menjalankan kembali program `ngrok`.
+  * **Bergantung pada Koneksi Lokal:** Kecepatan dan stabilitas aplikasi bergantung sepenuhnya pada kecepatan dan stabilitas koneksi internet di rumah Anda.
+
+-----
+
+## Referensi
+
+^ [kembali ke atas](https://www.google.com/search?q=%23readme---deploy-chhoto-url-dengan-docker-dan-ngrok) ^
+
+  * **[Chhoto URL - Repositori GitHub](https://www.google.com/search?q=https://github.com/sintan1729/chhoto-url)**
+  * **[Ngrok - Situs Resmi & Dokumentasi](https://ngrok.com/)**
+  * **[Docker - Situs Resmi](https://www.docker.com/)**
+
+<!-- end list -->
+
+```
+```
+
 
 # Aplikasi Web "Chhoto URL"
 
