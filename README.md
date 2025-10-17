@@ -1,7 +1,7 @@
 # Aplikasi Web "Chhoto URL"
 | Logo |
 |:---:|
-| ![Logo](Screenshoot/favicon.svg) |
+| ![Chhoto URL](Screenshoot/favicon.svg) |
 
 ## Pengenalan Chhoto URL
 
