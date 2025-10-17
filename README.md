@@ -190,6 +190,11 @@ Aplikasi belum memiliki fitur *failover* atau *replication*, sehingga jika serve
 | **Dukungan Pengguna** | Komunitas GitHub & open issue, tanpa support resmi. | Dukungan pelanggan 24/7 untuk plan berbayar. | Dukungan minimal melalui FAQ. |
 | **Kemudahan Instalasi & Pemeliharaan** | Mudah untuk developer: cukup git clone, npm install, dan deploy ke Railway/Vercel. | Tidak dapat diinstal lokal, hanya bisa pakai API atau dashboard web. | Tidak perlu instalasi. |
 
+## Kesimpulan
+
+Chhoto URL adalah aplikasi pemendek tautan berbasis Rust dan Actix Web yang dirancang ringan, cepat, dan mandiri tanpa bergantung pada layanan pihak ketiga. Aplikasi ini unggul dalam efisiensi, performa tinggi, dan kemudahan penggunaan, namun memiliki keterbatasan pada skalabilitas dan pemantauan sistem.
+
+Dibandingkan dengan Bitly dan TinyURL, Chhoto URL menawarkan solusi gratis, open-source, dan mudah diinstal, sehingga cocok bagi pengguna atau pengembang yang menginginkan kontrol penuh dan fleksibilitas tinggi dalam sistem pemendek tautan.
 
 ## Referensi
 
