@@ -201,5 +201,3 @@ Dibandingkan dengan Bitly dan TinyURL, Chhoto URL menawarkan solusi gratis, open
   * **[Chhoto URL - Repositori GitHub](https://www.google.com/search?q=https://github.com/sintan1729/chhoto-url)**
   * **[Ngrok - Situs Resmi & Dokumentasi](https://ngrok.com/)**
   * **[Docker - Situs Resmi](https://www.docker.com/)**
-
-Cantumkan tiap sumber informasi yang anda pakai.
