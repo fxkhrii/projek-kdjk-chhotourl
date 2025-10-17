@@ -120,30 +120,6 @@ Seluruh konfigurasi utama Chhoto URL diatur melalui environment variables di dal
 
 Setiap kali Anda mengubah nilai variabel ini, Anda harus menjalankan ulang container dengan docker-compose down dan docker-compose up -d agar perubahan diterapkan.
 
-Setting server tambahan yang diperlukan untuk meningkatkan fungsi dan kinerja aplikasi, misalnya:
- - batas upload file
- - batas memori
- - dll
-
-Plugin untuk fungsi tambahan
- - login dengan Google/Facebook
- - editor Markdown
- - dll
-
-
-##  Maintenance (opsional)
-
-Setting tambahan untuk maintenance secara periodik, misalnya:
-- buat backup database tiap pekan
-- hapus direktori sampah tiap hari
-- dll
-
-
-## Otomatisasi (opsional)
-
-Skrip shell untuk otomatisasi instalasi, konfigurasi, dan maintenance.
-
-
 ## Cara Pemakaian
 
 Setelah aplikasi berjalan dan dapat diakses melalui link ngrok:
