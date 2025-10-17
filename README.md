@@ -52,6 +52,7 @@ Skrip shell untuk otomatisasi instalasi, konfigurasi, dan maintenance.
 ## Pembahasan
 
 - Pendapat anda tentang aplikasi web ini
+
 **Kelebihan & Kekurangan**
 Chhoto URL memiliki beberapa keunggulan utama. Pertama, aplikasinya sangat ringan dan efisien, karena dibangun dengan teknologi yang cepat dan hemat sumber daya. Aplikasi ini dapat dijalankan pada server dengan spesifikasi rendah, bahkan di komputer pribadi, tanpa mengurangi kinerjanya. Kedua, sistemnya mudah digunakan, baik melalui antarmuka web maupun melalui perintah terminal (CLI). Pengguna cukup memasukkan URL panjang untuk mendapatkan versi pendek secara otomatis. Ketiga, Chhoto URL dapat dijalankan di berbagai platform, seperti Fly.io, Render, atau DigitalOcean, sehingga fleksibel untuk kebutuhan pribadi maupun organisasi kecil.
 
