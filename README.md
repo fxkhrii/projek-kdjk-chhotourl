@@ -5,11 +5,7 @@
 
 ## Pengenalan Chhoto URL
 
-Chhoto URL merupakan aplikasi pemendek tautan (URL shortener) yang dikembangkan menggunakan bahasa pemrograman Rust dengan framework Actix Web. Nama “Chhoto” berasal dari bahasa Bengali yang berarti “kecil”, merepresentasikan filosofi aplikasi ini: berukuran kecil namun memiliki kemampuan yang efisien dan bermanfaat besar.
-
-Aplikasi ini dirancang sebagai web app ringan dan mandiri yang berfungsi untuk mengonversi tautan panjang menjadi versi yang lebih singkat, mudah diingat, dan praktis untuk dibagikan. Melalui pendekatan arsitektur yang minimalis, Chhoto URL menawarkan solusi cepat dan aman tanpa ketergantungan pada layanan pihak ketiga.
-
-Dengan performa tinggi serta kemudahan penggunaan melalui antarmuka web maupun Command Line Interface (CLI), Chhoto URL menjadi pilihan ideal untuk individu maupun organisasi yang membutuhkan sistem pemendek tautan sederhana, efisien, dan dapat diandalkan.
+Nama “Chhoto” berasal dari bahasa Bangla yang berarti kecil, sehingga Chhoto URL secara harfiah dapat diartikan sebagai “URL Kecil”. Sesuai dengan namanya, aplikasi ini berfokus pada fungsi utama yaitu mempersingkat alamat website atau URL. Chhoto URL adalah sebuah layanan self-hosted, yang memungkinkan pengguna menjalankan sistem pemendek URL sendiri di server atau komputer pribadi tanpa tergantung pada layanan pihak ketiga. Proyek ini dirancang dengan prinsip kesederhanaan dan kecepatan, sehingga tidak menambahkan fitur yang tidak diperlukan, tetapi tetap efektif dalam menjalankan tugas utamanya. Dengan Chhoto URL, pengguna dapat dengan mudah membuat URL pendek yang praktis dan ringkas, sambil tetap memiliki kendali penuh atas layanannya sendiri.
 
 ## Instalasi
 
