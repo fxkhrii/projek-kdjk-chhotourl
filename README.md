@@ -1,24 +1,3 @@
-Tentu, saya mengerti masalahnya. Seringkali saat menyalin-tempel, format Markdown bisa sedikit berantakan. Mengeditnya langsung di GitHub sangat mudah.
-
-Anda tidak perlu mengedit baris per baris. Cara termudah adalah dengan **mengganti seluruh isi file** dengan versi yang sudah diperbaiki formatnya.
-
-Saya sudah menyiapkan versi yang sudah diperbaiki di bawah ini. Cukup ikuti langkah-langkah berikut.
-
-### Cara Memperbaiki Format di GitHub
-
-1.  Buka file `README.md` di repositori GitHub Anda.
-
-2.  Klik **ikon pensil (✏️)** di pojok kanan atas untuk masuk ke mode edit.
-
-    [Gambar antarmuka GitHub dengan panah menunjuk ke ikon edit]
-
-3.  **Hapus semua teks** yang ada di dalam editor.
-
-4.  **Salin seluruh konten** dari file yang sudah saya perbaiki di bawah ini, lalu **tempelkan** ke dalam editor di GitHub.
-
-5.  Gulir ke bawah halaman, beri judul perubahan (misalnya, "Perbaiki format Markdown"), lalu klik tombol hijau **"Commit changes"**.
-
------
 
 ### Konten README.md yang Sudah Diperbaiki
 
@@ -27,6 +6,47 @@ Gunakan konten di dalam file ini untuk menggantikan konten lama di GitHub. Saya 
   * **Link navigasi** di bagian atas agar berfungsi dengan benar.
   * **Blok kode** agar memiliki *syntax highlighting* (warna) yang sesuai.
   * **Format daftar** agar lebih rapi.
+
+Sekilas Tentang • Instalasi • Konfigurasi • Cara Pemakaian • Pembahasan • ReferensiSekilas Tentang^ kembali ke atas ^Chhoto URL adalah aplikasi penyingkat URL (URL shortener) open-source yang dapat di-hosting sendiri. Dokumen ini merupakan panduan lengkap untuk melakukan instalasi dan deployment Chhoto URL di lingkungan server lokal (menggunakan VirtualBox dan Kali Linux) agar dapat diakses secara publik dari internet.Untuk mencapai ini, kita menggunakan Docker untuk mengemas aplikasi dan Ngrok untuk menciptakan "terowongan" (tunnel) aman dari komputer lokal ke internet, sehingga aplikasi bisa diakses siapa saja tanpa perlu menyewa VPS.Instalasi^ kembali ke atas ^Kebutuhan SistemSebuah Virtual Machine (misalnya VirtualBox dengan Kali Linux).Docker dan Docker Compose terinstal di dalam VM.Akun gratis di situs Ngrok.Proses InstalasiLogin ke dalam Virtual Machine Anda, buka terminal, lalu buat direktori proyek.# Pindah ke direktori home
+$ cd ~
+# Membuat folder bernama chhoto-url dan masuk ke dalamnya
+$ mkdir chhoto-url && cd chhoto-url
+Buat file konfigurasi docker-compose.yml menggunakan editor teks.$ nano docker-compose.yml
+Salin dan tempel seluruh konfigurasi berikut ke dalam editor. Ganti nilai PASSWORD dan API_KEY dengan nilai rahasia buatan Anda sendiri.version: '3.8'
+services:
+  chhoto-url:
+    image: sintan1729/chhoto-url:latest
+    container_name: chhoto-url
+    restart: unless-stopped
+    ports:
+      - "4567:4567"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - SITE_URL=http://localhost:4567
+      - PASSWORD=GANTI_DENGAN_PASSWORD_ANDA
+      - API_KEY=GANTI_DENGAN_API_KEY_ANDA
+Jalankan container Docker di latar belakang dan verifikasi bahwa container sudah berjalan.$ docker-compose up -d
+$ docker-compose ps
+Pastikan status container adalah Up atau Running.Unduh Ngrok. Kunjungi halaman download Ngrok, klik kanan pada tombol download Linux, lalu "Salin alamat tautan".# Pindah ke direktori home
+$ cd ~
+# Ganti "LINK_DARI_WEBSITE" dengan tautan yang Anda salin
+$ wget "LINK_DARI_WEBSITE"
+# Ekstrak file ke lokasi yang dapat diakses dari mana saja
+$ sudo tar xvz ngrok-v3-*.tgz -C /usr/local/bin
+Hubungkan program ngrok dengan akun Anda. Dapatkan authtoken dari dashboard Ngrok.# Ganti <TOKEN_ANDA> dengan token dari dashboard
+$ ngrok config add-authtoken <TOKEN_ANDA>
+Buka "terowongan" ke port 4567. Biarkan terminal ini tetap berjalan.$ ngrok http 4567
+ngrok akan memberikan Anda sebuah URL publik di baris Forwarding. Salin URL HTTPS tersebut.Buka terminal baru (jangan tutup terminal ngrok). Hentikan sementara container Docker untuk memperbarui konfigurasinya.$ cd ~/chhoto-url
+$ docker-compose down
+Buka kembali file docker-compose.yml dan ubah nilai dari SITE_URL menjadi URL HTTPS yang Anda dapatkan dari ngrok.$ nano docker-compose.yml
+# ... (bagian lain dari file tetap sama)
+environment:
+  - SITE_URL=[https://URL-ACAK-DARI-NGROK.ngrok-free.dev](https://URL-ACAK-DARI-NGROK.ngrok-free.dev)
+  - PASSWORD=GANTI_DENGAN_PASSWORD_ANDA
+  - API_KEY=GANTI_DENGAN_API_KEY_ANDA
+Simpan file, lalu jalankan kembali container Docker dengan konfigurasi baru.$ docker-compose up -d
+
 
 http://googleusercontent.com/immersive_entry_chip/0
 
