@@ -121,24 +121,20 @@ Seluruh konfigurasi utama Chhoto URL diatur melalui environment variables di dal
 Setiap kali Anda mengubah nilai variabel ini, Anda harus menjalankan ulang container dengan docker-compose down dan docker-compose up -d agar perubahan diterapkan.
 
 ## Cara Pemakaian
+
  ![Chhoto URL](https://github.com/fxkhrii/projek-kdjk-chhotourl/blob/main/Screenshoot/Screenshot%202025-10-17%20200148.png)
 Setelah aplikasi berjalan dan dapat diakses melalui link ngrok:
 
  - Buka URL ngrok di browser. Anda mungkin akan melihat halaman peringatan dari ngrok. Klik "Visit Site" untuk melanjutkan.
- - Anda akan disambut oleh halaman login. Masukkan PASSWORD yang telah Anda atur di file docker-compose.yml.
 
 Untuk Membuat Tautan Pendek:
 
  - Tempelkan URL panjang yang ingin Anda singkat di kolom "Long URL".
  - Anda bisa membiarkan "Short URL" kosong agar dibuat secara acak, atau mengisinya dengan teks kustom.
- - Klik "Go".
+ - Anda bisa mengatur waktu expiry.
+ - Klik "Shorten!".
 
 Tautan pendek baru Anda akan muncul di daftar di bawahnya. Anda dapat menyalinnya, melihat QR Code-nya, atau menghapusnya.
-
- - Tampilan aplikasi web
- - Fungsi-fungsi utama
- - Isi dengan data real/dummy (jangan kosongan) dan sertakan beberapa screenshot
-
 
 ## Pembahasan
 
