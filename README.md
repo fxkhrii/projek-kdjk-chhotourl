@@ -80,7 +80,7 @@ Setelah aplikasi berjalan dan dapat diakses melalui link `ngrok`:
       * Klik **"Go"**.
 4.  Tautan pendek baru Anda akan muncul di daftar di bawahnya. Anda dapat menyalinnya, melihat QR Code-nya, atau menghapusnya.
 
------
+----- hvuvuvuyvyuvyuvyuvyu
 
 ## Pembahasan
 
@@ -112,7 +112,7 @@ Metode *deployment* menggunakan Docker di VM lokal yang di-ekspos melalui `ngrok
 
 <!-- end list -->
 
-```
+```bh g guv guvuvuvuyvy
 ```
 
 
@@ -313,8 +313,8 @@ Namun, Chhoto URL juga memiliki beberapa kekurangan. Sistem penyimpanan datanya 
 
 ## Referensi
 
-Chhoto URL - Repositori GitHub
-Ngrok - Situs Resmi & Dokumentasi
-Docker - Situs Resmi
+  * **[Chhoto URL - Repositori GitHub](https://www.google.com/search?q=https://github.com/sintan1729/chhoto-url)**
+  * **[Ngrok - Situs Resmi & Dokumentasi](https://ngrok.com/)**
+  * **[Docker - Situs Resmi](https://www.docker.com/)**
 
 Cantumkan tiap sumber informasi yang anda pakai.
