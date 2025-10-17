@@ -164,27 +164,67 @@ Tautan pendek baru Anda akan muncul di daftar di bawahnya. Anda dapat menyalinny
 
 ## Pembahasan
 
-Metode deployment menggunakan Docker di VM lokal yang di-ekspos melalui ngrok memiliki beberapa kelebihan dan kekurangan yang penting untuk dipahami.
+**Kelebihan Chhoto URL**
 
-Kelebihan:
- - Gratis & Cepat: Tidak memerlukan biaya sewa VPS dan prosesnya sangat cepat untuk membuat aplikasi lokal menjadi publik.
- - Tidak Perlu Kartu Kredit: Tidak seperti layanan VPS, ngrok tidak memerlukan verifikasi kartu kredit untuk paket gratisnya.
- - Sangat Baik untuk Demo & Tugas: Metode ini sempurna untuk mempresentasikan proyek atau tugas tanpa perlu setup server yang rumit.
+1. Efisiensi dalam Transmisi Data
 
-Kekurangan:
- - Tidak Online 24/7: Aplikasi hanya dapat diakses selama komputer utama, VirtualBox, container Docker, dan terminal ngrok semuanya berjalan. Jika salah satu mati, link akan ikut mati.
- - URL Dinamis: Pada paket gratis ngrok, URL publik akan berubah setiap kali Anda menghentikan dan menjalankan kembali program ngrok.
- - Bergantung pada Koneksi Lokal: Kecepatan dan stabilitas aplikasi bergantung sepenuhnya pada kecepatan dan stabilitas koneksi internet di rumah Anda.
+Chhoto URL memperpendek panjang data yang dikirimkan dalam proses komunikasi HTTP, sehingga mempercepat waktu transmisi dan mengurangi overhead jaringan. Pemendekan URL secara langsung menurunkan ukuran payload pada lapisan aplikasi, yang berdampak pada efisiensi throughput jaringan, terutama pada koneksi dengan bandwidth terbatas.
 
-- Pendapat anda tentang aplikasi web ini
+2. Performa Tinggi dan Respons Cepat
 
-**Kelebihan & Kekurangan**
+Aplikasi ini dibangun menggunakan Rust dan framework Actix Web, yang memiliki keunggulan dalam penanganan I/O asinkron. Mekanisme tersebut memungkinkan server menangani banyak koneksi secara paralel tanpa penurunan kinerja. Dari sisi komunikasi data, ini meningkatkan efisiensi dalam pengiriman dan penerimaan paket pada lapisan transport.
 
-Chhoto URL memiliki beberapa keunggulan utama. Pertama, aplikasinya sangat ringan dan efisien, karena dibangun dengan teknologi yang cepat dan hemat sumber daya. Aplikasi ini dapat dijalankan pada server dengan spesifikasi rendah, bahkan di komputer pribadi, tanpa mengurangi kinerjanya. Kedua, sistemnya mudah digunakan, baik melalui antarmuka web maupun melalui perintah terminal (CLI). Pengguna cukup memasukkan URL panjang untuk mendapatkan versi pendek secara otomatis. Ketiga, Chhoto URL dapat dijalankan di berbagai platform, seperti Fly.io, Render, atau DigitalOcean, sehingga fleksibel untuk kebutuhan pribadi maupun organisasi kecil.
+3. Struktur Client–Server yang Jelas
 
-Dari sisi teknis, Chhoto URL juga memiliki struktur kerja yang sederhana namun efektif. Saat pengguna meminta pembuatan tautan pendek, server memproses data dan menghasilkan URL baru yang mengarah ke alamat asli. Proses ini berlangsung cepat dan stabil karena menggunakan sistem pemrosesan permintaan secara paralel. Selain itu, pengguna memiliki kontrol penuh terhadap data yang tersimpan, karena seluruh sistem dapat dihosting sendiri tanpa ketergantungan pada layanan pihak ketiga.
+Chhoto URL mengimplementasikan pola client–server secara eksplisit. Client mengirimkan permintaan HTTP untuk membuat atau mengakses URL pendek, dan server menanggapi dengan hasil atau melakukan redirect. Pola ini mencerminkan arsitektur komunikasi dua arah yang menjadi dasar interaksi jaringan modern berbasis TCP/IP.
 
-Namun, Chhoto URL juga memiliki beberapa kekurangan. Sistem penyimpanan datanya masih menggunakan SQLite, yang kurang optimal untuk jumlah pengguna yang besar atau trafik tinggi. Aplikasi ini juga belum memiliki fitur pembagian beban (load balancing) atau cadangan server (backup system), sehingga jika server mengalami gangguan, layanan akan berhenti sepenuhnya. Dari sisi keamanan, Chhoto URL belum memiliki sistem enkripsi internal atau pengamanan tambahan, sehingga pengguna perlu menambahkan lapisan keamanan sendiri seperti SSL atau firewall eksternal. Selain itu, fitur analisis penggunaan masih terbatas; aplikasi hanya menampilkan jumlah kunjungan tanpa statistik lebih lanjut seperti lokasi pengguna atau waktu akses.
+4. Implementasi Protokol Standar Jaringan
+
+Aplikasi ini beroperasi penuh di atas protokol HTTP/HTTPS, dengan penggunaan kode status seperti 301 (Permanent Redirect) dan 302 (Temporary Redirect). Hal tersebut menunjukkan penerapan standar komunikasi data pada lapisan aplikasi dan keterkaitannya dengan lapisan transport TCP. Setiap interaksi menunjukkan siklus permintaan dan respons yang sesuai dengan prinsip komunikasi berlapis OSI.
+
+5. Portabilitas dan Fleksibilitas Jaringan
+
+Chhoto URL dapat dijalankan di berbagai lingkungan jaringan—baik pada server lokal (intranet), cloud publik (Fly.io, Render, DigitalOcean), maupun jaringan privat dengan konfigurasi Docker. Portabilitas ini menunjukkan fleksibilitas arsitektur aplikasi dalam berbagai topologi jaringan, dari skala kecil hingga terdistribusi.
+
+6. Transparansi Sistem dan Kemudahan Analisis Jaringan
+
+Karena bersifat open-source, seluruh alur komunikasi dan manajemen data dapat dipelajari serta diaudit secara terbuka. Transparansi ini memungkinkan pengamatan terhadap bagaimana data dikirim, diterima, dan diproses pada berbagai lapisan jaringan, termasuk penanganan permintaan HTTP, pengalihan tautan, dan manajemen koneksi.
+
+**Kekurangan Chhoto URL**
+
+1. Skalabilitas Terbatas dalam Koneksi Jaringan
+
+Chhoto URL menggunakan SQLite sebagai basis data lokal, yang hanya mampu menangani satu operasi tulis dalam satu waktu. Dalam konteks komunikasi jaringan, hal ini membatasi jumlah koneksi simultan dan throughput data, terutama saat banyak permintaan terjadi secara bersamaan.
+
+2. Tidak Mendukung Distribusi Beban (Load Balancing)
+
+Aplikasi tidak memiliki mekanisme pembagian beban trafik secara otomatis. Semua permintaan diarahkan ke satu instance server, menyebabkan potensi bottleneck pada lapisan aplikasi ketika beban jaringan meningkat. Hal ini membatasi efisiensi komunikasi data pada lingkungan multi-client.
+
+3. Ketergantungan pada Keamanan Eksternal
+
+Chhoto URL tidak menyediakan enkripsi internal maupun autentikasi tingkat jaringan. Keamanan komunikasi hanya bergantung pada lapisan eksternal, seperti penggunaan HTTPS melalui reverse proxy. Tanpa lapisan keamanan tambahan, komunikasi data rentan terhadap serangan sniffing atau injection pada jaringan terbuka.
+
+4. Tidak Memiliki Pemantauan Trafik dan Performa Jaringan
+
+Aplikasi ini tidak dilengkapi dengan fitur pemantauan (network monitoring) atau pengukuran performa seperti latency, packet loss, dan request time. Ketiadaan sistem pengawasan internal membatasi kemampuan untuk menganalisis efisiensi komunikasi data secara mendetail.
+
+5. Dokumentasi Konfigurasi Jaringan Kurang Lengkap
+
+Panduan resmi hanya berfokus pada instalasi aplikasi tanpa penjelasan detail mengenai integrasi dengan konfigurasi jaringan, seperti pengaturan port, NAT, atau firewall. Kondisi ini menyulitkan dalam pengelolaan konektivitas lintas jaringan atau penerapan sistem di lingkungan yang lebih kompleks.
+
+6. Tidak Mendukung Redundansi dan Keandalan Tinggi
+
+Chhoto URL belum memiliki mekanisme replikasi data atau sistem failover. Dalam konteks jaringan, hal ini berarti tidak ada jalur komunikasi cadangan jika terjadi kegagalan server utama. Akibatnya, ketahanan sistem terhadap gangguan jaringan tergolong rendah.
+
+**Perbandingan Aplikasi Pemendek URL**
+
+| Aspek | **Chhoto** | **Bitly** | **TinyURL** |
+|:------|:------------|:-----------|:-------------|
+| **Harga** | Gratis | Terbatas, langganan paling murah $10/bulan | Terbatas, langganan paling murah $10/bulan |
+| **Skalabilitas** | Skalabilitas terbatas kecuali pengguna mengatur database & cache sendiri (Redis/PostgreSQL). | Dirancang untuk enterprise — dapat menangani jutaan request harian. | Tidak scalable untuk organisasi besar, hanya cocok personal. |
+| **Dukungan Pengguna** | Komunitas GitHub & open issue, tanpa support resmi. | Dukungan pelanggan 24/7 untuk plan berbayar. | Dukungan minimal melalui FAQ. |
+| **Kemudahan Instalasi & Pemeliharaan** | Mudah untuk developer: cukup git clone, npm install, dan deploy ke Railway/Vercel. | Tidak dapat diinstal lokal, hanya bisa pakai API atau dashboard web. | Tidak perlu instalasi. |
+
 
 ## Referensi
 
